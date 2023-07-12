@@ -1,19 +1,14 @@
 import React from 'react'
-import { 
-   View,
-   Text,
-   StyleSheet,
-   TouchableOpacity
-   } from 'react-native'
-
 import * as Animatable from 'react-native-animatable'
 import { TextInput } from 'react-native-gesture-handler'
-
-import {
-  GestureHandlerRootView,
-} from 'react-native-gesture-handler';
-
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { 
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity
+  } from 'react-native'
 
 export default function SignIn() {
 
@@ -123,6 +118,6 @@ const styles = StyleSheet.create({
   },
 
   registerText:{
-    color:'#8c8c8c8',
+    color:'#8c8c8c',
   }
 })
