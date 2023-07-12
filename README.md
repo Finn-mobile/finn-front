@@ -21,5 +21,7 @@
 - Instale o [Android Studio](https://redirector.gvt1.com/edgedl/android/studio/install/2022.2.1.20/android-studio-2022.2.1.20-windows.exe).
   
 ## Usage 
+- Acesse a pasta do app
+  > <code> cd app/ </code>
 - Inicie o Expo
   > <code> expo start </code>
