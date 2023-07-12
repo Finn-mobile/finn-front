@@ -13,7 +13,12 @@ import {
   GestureHandlerRootView,
 } from 'react-native-gesture-handler';
 
+import { useNavigation } from '@react-navigation/native';
+
 export default function SignIn() {
+
+  const navigation = useNavigation();
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
           
@@ -37,7 +42,10 @@ export default function SignIn() {
             style={styles.input}
           />
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity 
+          style={styles.button}
+          onPress={ () => navigation.navigate('Home') }
+          >
             <Text style={styles.buttonText}>Acessar</Text>
           </TouchableOpacity>
 
