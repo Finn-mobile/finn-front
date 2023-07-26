@@ -6,14 +6,15 @@ import {
     StatusBar,
     TouchableOpacity
 } from "react-native";
-
-import { Feather } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons';
+import HeaderBack from "../HeaderBack";
 
 const StatusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 22 : 64;
 
 export default function Header({ name }){
     return (
         <View style={styles.container}>
+            <HeaderBack />
             <View style={styles.content}>
                 <Text style={styles.username}>Olá, {name}!</Text>
                 <TouchableOpacity activeOpacity={0.5} style={styles.buttonUser}>
@@ -38,6 +39,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        paddingLeft: 20,
+        paddingRight: 20,
     },
     username:{
         fontSize: 18,
@@ -45,8 +48,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     buttonUser:{
-        width: 44,
-        height: 44,
+        width: 54,
+        height: 54,
         backgroundColor: 'rgba(255,255,255,0.15)',
         justifyContent: 'center',
         alignItems: 'center',

@@ -5,6 +5,7 @@ import SignIn from '../pages/SignIn'
 import Budget from '../pages/Budget'
 import GptRecord from '../pages/GptRecord'
 import ManualRecord from '../pages/ManualRecord'
+import Tips from '../pages/Tips'
 import Home from '../pages/Home'
 
 const Stack = createNativeStackNavigator();
@@ -51,6 +52,12 @@ export default function Routes(){
             <Stack.Screen
                 name="Home"
                 component={Home}
+                options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+                name="Tips"
+                component={Tips}
                 options={{ headerShown: false }}
             />
 

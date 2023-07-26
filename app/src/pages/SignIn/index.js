@@ -20,7 +20,9 @@ export default function SignIn() {
       <View style={styles.container}>
         
         <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
-          <Text style={styles.message}>Bem vindo(a)</Text>
+          <Text style={styles.message}>Bem vindo(a) ao Finn</Text>
+          <Text style={styles.message}>Logue para aproveitar!</Text>
+
         </Animatable.View>
 
         <Animatable.View animation="fadeInUp" style={styles.containerForm}>
@@ -44,7 +46,8 @@ export default function SignIn() {
             <Text style={styles.buttonText}>Acessar</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonRegister}>
+          <TouchableOpacity style={styles.buttonRegister}
+          onPress={ () => navigation.navigate('Register') }>
             <Text style={styles.registerText}>Ou cadastre-se aqui</Text>
           </TouchableOpacity>
 
@@ -59,7 +62,7 @@ export default function SignIn() {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor:'#0A1128',
+    backgroundColor:'#2C6E49',
   },
 
   containerForm:{
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
   },
 
   button:{
-    backgroundColor:'#0A1128',
+    backgroundColor:'#2C6E49',
     width: '80%',
     borderRadius: 25,
     paddingVertical: 8,
@@ -108,7 +111,7 @@ const styles = StyleSheet.create({
 
   buttonRegister:{
     marginTop: 14,
-    alignSelf:'center'
+    alignSelf:'center',
   },
 
   buttonText:{
@@ -118,6 +121,8 @@ const styles = StyleSheet.create({
   },
 
   registerText:{
-    color:'#8c8c8c',
+    color:'#0A1128',
+    fontWeight:'bold',
+    textDecorationLine: 'underline',
   }
 })

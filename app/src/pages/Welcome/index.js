@@ -34,11 +34,19 @@ export default function Welcome() {
           <Text style={styles.text}>Faça o login para começar</Text>
 
           <TouchableOpacity 
-          style={styles.button}
-          onPress={ () => navigation.navigate('SignIn') }
+            style={styles.button}
+            onPress={ () => navigation.navigate('SignIn') }
           >
             <Text style={styles.buttonText}>Acessar</Text> 
           </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.buttonRegister}
+            onPress={ () => navigation.navigate('Register') }
+          >
+            <Text style={styles.buttonRegisterText}>Criar conta</Text> 
+          </TouchableOpacity>
+
       </Animatable.View>
 
     </View>
@@ -48,19 +56,19 @@ export default function Welcome() {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor: "#0A1128",
+    backgroundColor: "#2C6E49",
   },
 
   containerLogo:{
     flex:2,
-    backgroundColor: '#0A1128',
+    //backgroundColor: '#0A1128',
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   containerForm:{
     flex:1.2,
-    backgroundColor: '#2C6E49',
+    backgroundColor: '#0A1128',
     borderTopLeftRadius: 33,
     borderTopRightRadius: 33,
     paddingStart: '5%',
@@ -79,23 +87,42 @@ const styles = StyleSheet.create({
   text:{
     color: "#FEFEE3",
     alignSelf: 'center',
-    padding: 20,
+    padding: 10,
   },
 
   button:{
     position: 'absolute',
-    backgroundColor: '#0A1128',
+    backgroundColor: '#FFF',
     borderRadius: 50,
     paddingVertical: 8,
     width: '60%',
     alignSelf: 'center',
-    bottom: '20%',
+    bottom: '30%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  buttonRegister:{
+    position: 'absolute',
+    backgroundColor: '#B0B0B0',
+    borderRadius: 50,
+    paddingVertical: 8,
+    width: '60%',
+    alignSelf: 'center',
+    bottom: '10%',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   buttonText:{
-    color: "#FEFEE3",
+    color: "#0A1128",
+    alignSelf: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+
+  buttonRegisterText:{
+    color: "#0A1128",
     alignSelf: 'center',
     fontSize: 20,
     fontWeight: 'bold',
