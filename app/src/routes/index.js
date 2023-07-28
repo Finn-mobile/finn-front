@@ -13,6 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function Routes(){
     return(
         <Stack.Navigator>
+
             <Stack.Screen
                 name="Welcome"
                 component={Welcome}
