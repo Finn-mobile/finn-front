@@ -1,31 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Button, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import HeaderBack from '../../components/HeaderBack';
-import { useNavigation } from '@react-navigation/native';
 
-const CreateRegister = () => {
-  const [type, setType] = useState('Despesa');
+export default function ManualRecord() {
+
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
-  const [categoryName, setCategoryName] = useState('Transporte');
+  const [category, setCategory] = useState('1');
+  const [isExpense, setIsExpense] = useState(true);
 
-  const navigation = useNavigation();
-
-  const handleRegister = () => {
-    // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    let url = 'http://192.168.3.14:3000/expenses';
-
-    let options = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify ({type, description, value: parseFloat(value), category_name: categoryName})
-    };
-
-    fetch(url, options)
-      .then(res => res.json())
-      .then(json => console.log(json))
-      .catch(err => console.error('error:' + err));
+  const handleSave = () => {
+    // Aqui você pode fazer o tratamento dos dados e salvar a receita/despesa
+    console.log('Salvando registro...');
+    console.log('Descrição:', description);
+    console.log('Valor:', value);
+    console.log('Categoria:', category);
+    console.log('Tipo:', isExpense ? 'Despesa' : 'Receita');
   };
 
   return (
@@ -38,13 +29,14 @@ const CreateRegister = () => {
         <Text style={styles.label}>Registro Financeiro</Text>
       </View>
 
+
       <Picker
         style={styles.input}
-        selectedValue={type}
-        onValueChange={(itemValue) => setType(itemValue)}
+        selectedValue={isExpense}
+        onValueChange={(itemValue) => setIsExpense(itemValue)}
       >
-        <Picker.Item label="Despesa" value="Despesa" />
-        <Picker.Item label="Receita" value="Receita" />
+        <Picker.Item label="Despesa" value={true} />
+        <Picker.Item label="Receita" value={false} />
       </Picker>
 
       <Text style={styles.label}>Descrição</Text>
@@ -67,23 +59,22 @@ const CreateRegister = () => {
       <Text style={styles.label}>Categoria</Text>
       <Picker
         style={styles.input}
-        selectedValue={categoryName}
-        onValueChange={(itemValue) => setCategoryName(itemValue)}
+        selectedValue={category}
+        onValueChange={(itemValue) => setCategory(itemValue)}
       >
-        <Picker.Item label="Transporte" value="Transporte" />
-        <Picker.Item label="Alimentação" value="Alimentação" />
-        <Picker.Item label="Moradia" value="Moradia" />
-        <Picker.Item label="Lazer" value="Lazer" />
-        <Picker.Item label="Educação" value="Educação" />
-        <Picker.Item label="Saúde" value="Saúde" />
-        <Picker.Item label="Compras" value="Compras" />
-        <Picker.Item label="Serviços" value="Serviços" />
-        <Picker.Item label="Outros" value="Outros" />
+        <Picker.Item label="Categoria 1" value="1" />
+        <Picker.Item label="Categoria 2" value="2" />
+        <Picker.Item label="Categoria 3" value="3" />
+        <Picker.Item label="Categoria 4" value="4" />
+        <Picker.Item label="Categoria 5" value="5" />
+        <Picker.Item label="Categoria 6" value="6" />
+        <Picker.Item label="Categoria 7" value="7" />
       </Picker>
 
-      <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
+      <TouchableOpacity style={styles.button} onPress={handleSave}>
         <Text style={styles.buttonText}>Salvar</Text>
       </TouchableOpacity>
+
     </View>
   );
 };
@@ -128,5 +119,3 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 });
-
-export default CreateRegister;
