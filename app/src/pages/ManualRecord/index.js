@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Button, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import HeaderBack from '../../components/HeaderBack';
-import { useNavigation } from '@react-navigation/native';
 
 const CreateRegister = () => {
   const [type, setType] = useState('Despesa');
@@ -10,11 +9,9 @@ const CreateRegister = () => {
   const [value, setValue] = useState('');
   const [categoryName, setCategoryName] = useState('Transporte');
 
-  const navigation = useNavigation();
-
   const handleRegister = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    let url = 'http://192.168.3.14:3000/expenses';
+    let url = 'http://192.168.3.15:3000/expenses';
 
     let options = {
       method: 'POST',
