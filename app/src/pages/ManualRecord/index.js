@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import HeaderBack from '../../components/HeaderBack';
 
@@ -22,6 +22,7 @@ const CreateRegister = () => {
     fetch(url, options)
       .then(res => res.json())
       .then(json => console.log(json))
+      .then(Alert.alert('Registro cadastrado com sucesso!'))
       .catch(err => console.error('error:' + err));
   };
 
@@ -78,9 +79,10 @@ const CreateRegister = () => {
         <Picker.Item label="Outros" value="Outros" />
       </Picker>
 
-      <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
-        <Text style={styles.buttonText}>Salvar</Text>
-      </TouchableOpacity>
+      <Button 
+        title="Cadastrar"
+        onPress={handleRegister}
+      />
     </View>
   );
 };
