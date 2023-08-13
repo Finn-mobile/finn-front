@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { View, Text, StyleSheet, FlatList, ActivityIndicator, Alert } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, StatusBar, TextInput } from 'react-native';
 import HeaderBack from '../../components/HeaderBack';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const Budget = () => {
   const [BudgetData, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
-  let url = 'http://192.168.3.15:3000/expenses';
+  const value = 0;
+  let url = 'http://192.168.3.14:3000/expenses';
 
   let options = {method: 'GET', headers: {'Content-Type': 'application/json'}};
   
@@ -19,7 +17,7 @@ const Budget = () => {
       .catch(err => console.error('error:' + err))
       .finally(() => setLoading(false))
   }, []);
-
+  
   return (
 
     <View style={styles.container}>
@@ -30,13 +28,40 @@ const Budget = () => {
           <Text style={styles.label}>Orçamento</Text>
         </View>
 
-        <View style={{ padding: 20 }}>
+        <View>
+          <Text style={{fontSize: 30, color: 'white', padding: 20}}>Carteira: R${value}</Text>
+        </View>
+        <View style={{ marginBottom: 20, marginTop:20, marginRigh: 10, marginLeft: 10 }}>
             {isLoading ? <Text>Loading...</Text> :
-            (
+            (                
                 <FlatList
                     data={BudgetData}
-                    keyExtractor={({ id }) => id.toString()}
-                    renderItem={({ item }) => <Text>{item.type} {item.description} {item.value} {item.category.name}</Text>
+                    keyExtractor={ id => id.id}
+                    contentContainerStyle={{
+                      paddingBottom: 120,
+                      paddingtop: StatusBar.currentHeight || 42
+
+                    }}
+                    renderItem={({ item }) => {       
+                      return <View style={{flexDirection: 'row', padding: 20, marginBottom: 20, backgroundColor: 'white', borderRadius: 16}}>
+                        <View style={{marginTop: 15}}>
+                          <Image
+                            source={require('../../assets/wallet-filled-money-tool.png')}
+                            style={{width:40, height: 40, marginRight: 5}}
+                          />
+                        </View>
+
+                        <View>
+                          <Text style={{fontSize: 20, fontWeight: '700'}}>{item.description}</Text>
+                          <Text style={{fontSize: 15, }}>{item.category.name}</Text>  
+                          <Text style={{fontSize: 15, }}>{item.type}</Text>
+                        </View> 
+                        <View>
+                          <Text style={{fontSize: 19, marginLeft: 70}}>{item.value}</Text>
+                        </View>
+
+                      </View>
+                    }
                   }
                 />
             )}

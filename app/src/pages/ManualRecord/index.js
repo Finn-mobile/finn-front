@@ -11,7 +11,7 @@ const CreateRegister = () => {
 
   const handleRegister = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    let url = 'http://192.168.3.15:3000/expenses';
+    let url = 'http://192.168.3.14:3000/expenses';
 
     let options = {
       method: 'POST',
