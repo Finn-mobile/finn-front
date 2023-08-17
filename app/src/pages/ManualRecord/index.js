@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import HeaderBack from '../../components/HeaderBack';
+import { AuthContext } from '../../context/AuthContext';
 
 const CreateRegister = () => {
-  const [type, setType] = useState('Despesa');
+  const { token } = useContext(AuthContext);
+  const [type, setType] = useState('Gasto');
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [categoryName, setCategoryName] = useState('Transporte');
@@ -16,15 +18,18 @@ const CreateRegister = () => {
 
     let options = {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify ({type, description, value: parseFloat(value), category_name: categoryName})
+      headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+ token},
+      body: JSON.stringify({type, description, amount: parseFloat(value), category_name: categoryName})
     };
 
     fetch(url, options)
-      .then(res => res.json())
-      .then(json => console.log(json))
-      .then(Alert.alert('Registro cadastrado com sucesso!'))
-      .catch(err => console.error('error:' + err));
+      .then(res => {
+        if (res.status === 201) {
+          Alert.alert('Registro cadastrado com sucesso!')
+          setDescription("");
+          setValue("");
+          setCategoryName("Transporte")
+      }})
   };
 
   useEffect(() => {
@@ -64,7 +69,7 @@ const CreateRegister = () => {
       <TextInput
         style={styles.input}
         value={description}
-        onChangeText={setDescription}
+        onChange={e => setDescription(e.nativeEvent.text)}
         placeholder="Qual item que deseja cadastrar ?"
       />
 
@@ -72,7 +77,7 @@ const CreateRegister = () => {
       <TextInput
         style={styles.input}
         value={value}
-        onChangeText={setValue}
+        onChange={e => setValue(e.nativeEvent.text)}
         keyboardType="numeric"
         placeholder="Qual o valor ?"
       />
@@ -116,9 +121,9 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#FFF',
-    borderRadius:30,
-    padding: 10,
-    marginBottom: 20,
+    // borderRadius:30,
+    // padding: 10,
+    // marginBottom: 20,
   },
   button: {
     backgroundColor: '#0A1128',
