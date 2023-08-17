@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#FFF',
-    // borderRadius:30,
-    // padding: 10,
-    // marginBottom: 20,
+    borderRadius:30,
+    padding: 10,
+    marginBottom: 20,
   },
   button: {
     backgroundColor: '#0A1128',
