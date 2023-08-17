@@ -8,7 +8,7 @@ const Budget = () => {
   const [isLoading, setLoading] = useState(true);
   const { token, user } = useContext(AuthContext);
   const value = 0;
-  let url = 'http://192.168.0.25:3000/transactions';
+  let url = 'http://192.168.3.14:3000/transactions';
 
   let options = {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+ token}};
   

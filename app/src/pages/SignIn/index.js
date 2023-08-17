@@ -43,7 +43,7 @@ export default function SignIn() {
           <TouchableOpacity
             style={styles.button}
             onPress={async () => {
-              const response = await fetch("http://192.168.0.25:3000/login", {
+              const response = await fetch("http://192.168.3.14:3000/login", {
                 method: "POST",
                 body: JSON.stringify({ email, password }),
                 headers: { "Content-type": "application/json" },

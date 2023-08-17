@@ -27,7 +27,7 @@ const Register = () => {
       return;
     }
     
-    const response = await fetch("http://192.168.0.25:3000/signup", {
+    const response = await fetch("http://192.168.3.14:3000/signup", {
       method: "POST",
       body: JSON.stringify({ email, password, name }),
       headers: { "Content-type": "application/json" },

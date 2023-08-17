@@ -14,7 +14,7 @@ const CreateRegister = () => {
 
   const handleRegister = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    let url = 'http://192.168.0.25:3000/transactions';
+    let url = 'http://192.168.3.14:3000/transactions';
 
     let options = {
       method: 'POST',
@@ -33,7 +33,7 @@ const CreateRegister = () => {
   };
 
   useEffect(() => {
-    let url = 'http://192.168.0.25:3000/categories';
+    let url = 'http://192.168.3.14:3000/categories';
 
     let options = {
       method: 'GET',
