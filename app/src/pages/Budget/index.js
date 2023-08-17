@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, StatusBar, TextInput } from 'react-native';
 import HeaderBack from '../../components/HeaderBack';
+import { AuthContext } from '../../context/AuthContext';
 
 const Budget = () => {
   const [BudgetData, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const { token, user } = useContext(AuthContext);
   const value = 0;
-  let url = 'http://192.168.3.14:3000/expenses';
+  let url = 'http://192.168.0.25:3000/transactions';
 
-  let options = {method: 'GET', headers: {'Content-Type': 'application/json'}};
+  let options = {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+ token}};
   
   useEffect(() => {
     fetch(url, options)
       .then(res => res.json())
-      .then(json => setData(json))
+      .then(json => {
+        console.log(json)
+        setData(json)
+      })
       .catch(err => console.error('error:' + err))
       .finally(() => setLoading(false))
   }, []);
@@ -57,7 +62,7 @@ const Budget = () => {
                           <Text style={{fontSize: 15, }}>{item.type}</Text>
                         </View> 
                         <View>
-                          <Text style={{fontSize: 19, marginLeft: 70}}>{item.value}</Text>
+                          <Text style={{fontSize: 19, marginLeft: 70}}>{item.amount}</Text>
                         </View>
 
                       </View>

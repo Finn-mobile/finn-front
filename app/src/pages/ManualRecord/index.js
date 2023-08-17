@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import HeaderBack from '../../components/HeaderBack';
@@ -8,10 +8,11 @@ const CreateRegister = () => {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [categoryName, setCategoryName] = useState('Transporte');
+  const [categories, setCategories] = useState([])
 
   const handleRegister = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    let url = 'http://192.168.3.14:3000/expenses';
+    let url = 'http://192.168.0.25:3000/transactions';
 
     let options = {
       method: 'POST',
@@ -25,6 +26,20 @@ const CreateRegister = () => {
       .then(Alert.alert('Registro cadastrado com sucesso!'))
       .catch(err => console.error('error:' + err));
   };
+
+  useEffect(() => {
+    let url = 'http://192.168.0.25:3000/categories';
+
+    let options = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'},
+    };
+
+    fetch(url, options)
+      .then(res => res.json())
+      .then(json => setCategories(json))
+      .catch(err => console.error('error:' + err));
+  }, [setCategories])
 
   return (
 
@@ -41,8 +56,8 @@ const CreateRegister = () => {
         selectedValue={type}
         onValueChange={(itemValue) => setType(itemValue)}
       >
-        <Picker.Item label="Despesa" value="Despesa" />
-        <Picker.Item label="Receita" value="Receita" />
+        <Picker.Item label="Gasto" value="Gasto" />
+        <Picker.Item label="Recebimento" value="Recebimento" />
       </Picker>
 
       <Text style={styles.label}>Descrição</Text>
@@ -68,15 +83,9 @@ const CreateRegister = () => {
         selectedValue={categoryName}
         onValueChange={(itemValue) => setCategoryName(itemValue)}
       >
-        <Picker.Item label="Transporte" value="Transporte" />
-        <Picker.Item label="Alimentação" value="Alimentação" />
-        <Picker.Item label="Moradia" value="Moradia" />
-        <Picker.Item label="Lazer" value="Lazer" />
-        <Picker.Item label="Educação" value="Educação" />
-        <Picker.Item label="Saúde" value="Saúde" />
-        <Picker.Item label="Compras" value="Compras" />
-        <Picker.Item label="Serviços" value="Serviços" />
-        <Picker.Item label="Outros" value="Outros" />
+        {categories && categories.map(category => (
+          <Picker.Item key={category.id} label={category.name} value={category.name} />
+        ))}
       </Picker>
 
       <Button 
