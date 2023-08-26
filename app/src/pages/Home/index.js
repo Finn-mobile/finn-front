@@ -4,9 +4,12 @@ import Header from '../../components/Header'
 import HeaderBack from '../../components/HeaderBack';
 import GenericButton from '../../components/ButtonGeneric';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
 
 
 export default function Home() {
+  const { user } = useContext(AuthContext);
 
   const navigation = useNavigation();
 
@@ -17,7 +20,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Header name="Felipe Bernard" />
+      <Header name={user.name} />
 
       <View style={styles.graphicsArea}>
 

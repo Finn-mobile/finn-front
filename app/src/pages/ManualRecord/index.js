@@ -1,23 +1,50 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import HeaderBack from '../../components/HeaderBack';
+import { AuthContext } from '../../context/AuthContext';
 
-export default function ManualRecord() {
-
+const CreateRegister = () => {
+  const { token } = useContext(AuthContext);
+  const [type, setType] = useState('Gasto');
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
-  const [category, setCategory] = useState('1');
-  const [isExpense, setIsExpense] = useState(true);
+  const [categoryName, setCategoryName] = useState('Transporte');
+  const [categories, setCategories] = useState([])
 
-  const handleSave = () => {
-    // Aqui você pode fazer o tratamento dos dados e salvar a receita/despesa
-    console.log('Salvando registro...');
-    console.log('Descrição:', description);
-    console.log('Valor:', value);
-    console.log('Categoria:', category);
-    console.log('Tipo:', isExpense ? 'Despesa' : 'Receita');
+  const handleRegister = () => {
+    // Aqui você pode fazer o tratamento dos dados e realizar o registro
+    let url = 'http://192.168.3.14:3000/transactions';
+
+    let options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+ token},
+      body: JSON.stringify({type, description, amount: parseFloat(value), category_name: categoryName})
+    };
+
+    fetch(url, options)
+      .then(res => {
+        if (res.status === 201) {
+          Alert.alert('Registro cadastrado com sucesso!')
+          setDescription("");
+          setValue("");
+          setCategoryName("Transporte")
+      }})
   };
+
+  useEffect(() => {
+    let url = 'http://192.168.3.14:3000/categories';
+
+    let options = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'},
+    };
+
+    fetch(url, options)
+      .then(res => res.json())
+      .then(json => setCategories(json))
+      .catch(err => console.error('error:' + err));
+  }, [setCategories])
 
   return (
 
@@ -29,21 +56,20 @@ export default function ManualRecord() {
         <Text style={styles.label}>Registro Financeiro</Text>
       </View>
 
-
       <Picker
         style={styles.input}
-        selectedValue={isExpense}
-        onValueChange={(itemValue) => setIsExpense(itemValue)}
+        selectedValue={type}
+        onValueChange={(itemValue) => setType(itemValue)}
       >
-        <Picker.Item label="Despesa" value={true} />
-        <Picker.Item label="Receita" value={false} />
+        <Picker.Item label="Gasto" value="Gasto" />
+        <Picker.Item label="Recebimento" value="Recebimento" />
       </Picker>
 
       <Text style={styles.label}>Descrição</Text>
       <TextInput
         style={styles.input}
         value={description}
-        onChangeText={setDescription}
+        onChange={e => setDescription(e.nativeEvent.text)}
         placeholder="Qual item que deseja cadastrar ?"
       />
 
@@ -51,7 +77,7 @@ export default function ManualRecord() {
       <TextInput
         style={styles.input}
         value={value}
-        onChangeText={setValue}
+        onChange={e => setValue(e.nativeEvent.text)}
         keyboardType="numeric"
         placeholder="Qual o valor ?"
       />
@@ -59,22 +85,18 @@ export default function ManualRecord() {
       <Text style={styles.label}>Categoria</Text>
       <Picker
         style={styles.input}
-        selectedValue={category}
-        onValueChange={(itemValue) => setCategory(itemValue)}
+        selectedValue={categoryName}
+        onValueChange={(itemValue) => setCategoryName(itemValue)}
       >
-        <Picker.Item label="Categoria 1" value="1" />
-        <Picker.Item label="Categoria 2" value="2" />
-        <Picker.Item label="Categoria 3" value="3" />
-        <Picker.Item label="Categoria 4" value="4" />
-        <Picker.Item label="Categoria 5" value="5" />
-        <Picker.Item label="Categoria 6" value="6" />
-        <Picker.Item label="Categoria 7" value="7" />
+        {categories && categories.map(category => (
+          <Picker.Item key={category.id} label={category.name} value={category.name} />
+        ))}
       </Picker>
 
-      <TouchableOpacity style={styles.button} onPress={handleSave}>
-        <Text style={styles.buttonText}>Salvar</Text>
-      </TouchableOpacity>
-
+      <Button 
+        title="Cadastrar"
+        onPress={handleRegister}
+      />
     </View>
   );
 };
@@ -119,3 +141,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
 });
+
+export default CreateRegister;

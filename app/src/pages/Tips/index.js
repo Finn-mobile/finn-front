@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from '../../components/Header'
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Tips() {
-    return (
+  const { user } = useContext(AuthContext);
+  return (
       <View style={styles.container}>
-        <Header name="Felipe Bernard" />
+        <Header name={user.name} />
         <Text>Tela Dicas</Text>
       </View>
     );

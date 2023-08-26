@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const Register = () => {
   const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,14 +11,34 @@ const Register = () => {
 
   const navigation = useNavigation();
 
-  const handleRegister = () => {
-    // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    console.log('Nome:', name);
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Confirmar Email:', confirmEmail);
-    console.log('Senha:', password);
-    console.log('Confirmar Senha:', confirmPassword);
+  const handleRegister = async () => {
+    if (!name || !email || !confirmEmail || !password || !confirmPassword) {
+      Alert.alert("Preencha todos os campos!");
+      return;
+    }
+
+    if (email !== confirmEmail) {
+      Alert.alert("Email devem ser iguais");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert("Senhas devem ser iguais");
+      return;
+    }
+    
+    const response = await fetch("http://192.168.3.14:3000/signup", {
+      method: "POST",
+      body: JSON.stringify({ email, password, name }),
+      headers: { "Content-type": "application/json" },
+    });
+
+    if (response.status !== 201) {
+      Alert.alert("Email já usado");
+      return;
+    }
+    Alert.alert("Conta criada")
+    navigation.navigate("SignIn")
   };
 
   return (
@@ -31,21 +50,14 @@ const Register = () => {
       <TextInput
         style={styles.input}
         value={name}
-        onChangeText={setName}
-      />
-
-      <Text style={styles.label}>Username</Text>
-      <TextInput
-        style={styles.input}
-        value={username}
-        onChangeText={setUsername}
+        onChange={(e) => setName(e.nativeEvent.text)}
       />
 
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
         value={email}
-        onChangeText={setEmail}
+        onChange={(e) => setEmail(e.nativeEvent.text)}
         keyboardType="email-address"
       />
 
@@ -53,7 +65,7 @@ const Register = () => {
       <TextInput
         style={styles.input}
         value={confirmEmail}
-        onChangeText={setConfirmEmail}
+        onChange={(e) => setConfirmEmail(e.nativeEvent.text)}
         keyboardType="email-address"
       />
 
@@ -61,7 +73,7 @@ const Register = () => {
       <TextInput
         style={styles.input}
         value={password}
-        onChangeText={setPassword}
+        onChange={(e) => setPassword(e.nativeEvent.text)}
         secureTextEntry
       />
 
@@ -69,7 +81,7 @@ const Register = () => {
       <TextInput
         style={styles.input}
         value={confirmPassword}
-        onChangeText={setConfirmPassword}
+        onChange={(e) => setConfirmPassword(e.nativeEvent.text)}
         secureTextEntry
       />
 
