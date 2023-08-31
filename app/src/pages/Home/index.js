@@ -24,10 +24,11 @@ export default function Home() {
 
       <View style={styles.graphicsArea}>
 
-        <Text style={styles.text} >
-          Áreas para os gráficos
-        </Text>
-
+      <Image 
+          source={require('../../assets/Graficos.png')} 
+          style={styles.graphics}
+          resizeMode="contain"
+        />
       </View>
 
       <View style={styles.buttonContainer}>
@@ -87,6 +88,9 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#2C2C2C',
     padding: 20,
+  },
+  graphics:{
+    top: -20
   },
 
   buttonContainer: {
