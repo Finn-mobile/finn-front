@@ -1,0 +1,59 @@
+{
+  "welcomePage": {
+    "greeting": "¡Monitorea y organiza tus\ngastos desde cualquier lugar!",
+    "greetingSub": "Inicia sesión para comenzar",
+    "signInButtonLabel": "Acceder",
+    "signUpButtonLabel": "Crear cuenta"
+  },
+  "signInPage": {
+    "welcome": "¡Bienvenido(a) a Finn!",
+    "welcomeMessage": "Inicia sesión para disfrutar!",
+    "email": "Email",
+    "emailPlaceholder" : "Ingresa tu email",
+    "password": "Contraseña",
+    "passwordPlaceholder" : "Ingresa tu contraseña",
+    "signInButtonLabel": "Acceder",
+    "signUpButtonLabel": "O regístrate aquí",
+    "signInError": "Email o contraseña inválidos"
+  },
+  "createAccountPage": {
+    "title": "Crea tu cuenta en Finn",
+    "name": "Nombre",
+    "email": "Email",
+    "emailConfirm": "Confirmar Email",
+    "password": "Contraseña",
+    "passwordConfirm": "Confirmar Contraseña",
+    "buttonLabel": "Registrar",
+    "buttonSigin": "¿Ya tienes una cuenta? Haz clic aquí",
+    "alertSuccess": "!Cuenta creada con éxito!"
+  },
+  "homePage": {
+    "budget": "Presupuesto",
+    "register": "Registrar",
+    "tips": "Consejos"
+  },
+  "registerPage": {
+    "title": "Registro Financiero",
+    "expense": "Gasto",
+    "income": "Ingreso",
+    "description": "Descripción",
+    "descriptionPlaceholder": "¿Qué artículo desea registrar?",
+    "value": "Valor",
+    "valuePlaceholder": "¿Cuánto es el valor?",
+    "category": "Categoría",
+    "buttonRegister": "Registrar",
+    "alertSuccess": "!Registro registrado con éxito!"
+  },
+  "gptPage": {
+    "inputPlaceholder" : "Ingrese sus ingresos y gastos: ",
+    "buttonLabel": "Registrar",
+    "title": "Registro de Gepeto"
+  },
+  "budgetPage": {
+    "title": "Presupuesto",
+    "money": "Dinero"
+  },
+  "header":{
+    "hello": "Hola"
+  }
+}

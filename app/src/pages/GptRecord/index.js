@@ -3,12 +3,13 @@ import { View, Text, TextInput, StyleSheet, Button, Alert, KeyboardAvoidingView,
 import HeaderBack from '../../components/HeaderBack';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 const GptRecord = () => {
   const { token } = useContext(AuthContext);
   const [input, setInput] = useState('');
   const [data, setData] = useState([]);
-
+  const { t } = useTranslation();
 
   const handleRegistergpt = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
@@ -36,7 +37,7 @@ const GptRecord = () => {
       <HeaderBack />
 
       <View style={styles.HeaderPage}>
-        <Text style={styles.label}>Registro GPT</Text>
+        <Text style={styles.label}>{t('gptPage.title')}</Text>
       </View>
 
       <View style={{ marginBottom: 20, marginTop:20, marginRigh: 10, marginLeft: 10 }}>
@@ -74,10 +75,10 @@ const GptRecord = () => {
           style={styles.input}
           value={input}
           onChangeText={setInput}
-          placeholder="Insira os seus ganhos e gastos:"
+          placeholder={t('gptPage.inputPlaceholder')}
           />
           <Button 
-            title="Cadastrar"
+            title={t('gptPage.buttonLabel')}
             onPress={handleRegistergpt}
           />
         </KeyboardAvoidingView>

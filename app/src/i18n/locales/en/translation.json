@@ -15,5 +15,45 @@
     "signInButtonLabel": "Sign in",
     "signUpButtonLabel": "Create account here",
     "signInError": "Invalid email or password"
+  },
+  "createAccountPage": {
+    "title": "Create your account on Finn",
+    "name": "Name",
+    "email": "Email",
+    "emailConfirm": "Confirm Email",
+    "password": "Password",
+    "passwordConfirm": "Confirm Password",
+    "buttonLabel": "Register",
+    "buttonSigin": "Already have an account? Click here",
+    "alertSuccess": "Account successfully created!"
+  },
+  "homePage": {
+    "budget": "Budget",
+    "register": "Register",
+    "tips": "Tips"
+  },
+  "registerPage": {
+    "title": "Financial Register",
+    "expense": "Expense",
+    "income": "Income",
+    "description": "Description",
+    "descriptionPlaceholder": "Which item do you want to register?",
+    "value": "Value",
+    "valuePlaceholder": "How much is the value?",
+    "category": "Category",
+    "buttonRegister": "Register",
+    "alertSuccess": "Record successfully registered!"
+  },
+  "gptPage":{
+    "inputPlaceholder" : "Enter your earnings and expenses: ",
+    "buttonLabel": "Register",
+    "title": "Gepeto Register"
+   },
+   "budgetPage":{
+    "title": "Budget",
+    "money": "Money"
+  },
+  "header":{
+    "hello": "Hello"
   }
 }

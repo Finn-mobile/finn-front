@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import HeaderBack from '../../components/HeaderBack';
 import { AuthContext } from '../../context/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 const CreateRegister = () => {
   const { token } = useContext(AuthContext);
@@ -11,6 +12,7 @@ const CreateRegister = () => {
   const [value, setValue] = useState('');
   const [categoryName, setCategoryName] = useState('Transporte');
   const [categories, setCategories] = useState([])
+  const { t } = useTranslation();
 
   const handleRegister = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
@@ -25,7 +27,7 @@ const CreateRegister = () => {
     fetch(url, options)
       .then(res => {
         if (res.status === 201) {
-          Alert.alert('Registro cadastrado com sucesso!')
+          Alert.alert(t('registerPage.alertSuccess'))
           setDescription("");
           setValue("");
           setCategoryName("Transporte")
@@ -53,7 +55,7 @@ const CreateRegister = () => {
       <HeaderBack />
 
       <View style={styles.HeaderPage}>
-        <Text style={styles.label}>Registro Financeiro</Text>
+        <Text style={styles.label}>{t('registerPage.title')}</Text>
       </View>
 
       <Picker
@@ -61,28 +63,28 @@ const CreateRegister = () => {
         selectedValue={type}
         onValueChange={(itemValue) => setType(itemValue)}
       >
-        <Picker.Item label="Gasto" value="Gasto" />
-        <Picker.Item label="Recebimento" value="Recebimento" />
+        <Picker.Item label={t('registerPage.expense')} value={t('registerPage.expense')} />
+        <Picker.Item label={t('registerPage.income')} value={t('registerPage.income')} />
       </Picker>
 
-      <Text style={styles.label}>Descrição</Text>
+      <Text style={styles.label}>{t('registerPage.description')}</Text>
       <TextInput
         style={styles.input}
         value={description}
         onChange={e => setDescription(e.nativeEvent.text)}
-        placeholder="Qual item que deseja cadastrar ?"
+        placeholder={t('registerPage.descriptionPlaceholder')}
       />
 
-      <Text style={styles.label}>Valor</Text>
+      <Text style={styles.label}>{t('registerPage.value')}</Text>
       <TextInput
         style={styles.input}
         value={value}
         onChange={e => setValue(e.nativeEvent.text)}
         keyboardType="numeric"
-        placeholder="Qual o valor ?"
+        placeholder={t('registerPage.valuePlaceholder')}
       />
 
-      <Text style={styles.label}>Categoria</Text>
+      <Text style={styles.label}>{t('registerPage.category')}</Text>
       <Picker
         style={styles.input}
         selectedValue={categoryName}
@@ -94,7 +96,7 @@ const CreateRegister = () => {
       </Picker>
 
       <Button 
-        title="Cadastrar"
+        title={t('registerPage.buttonRegister')}
         onPress={handleRegister}
       />
     </View>

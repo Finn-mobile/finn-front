@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import Header from '../../components/Header'
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
@@ -9,7 +9,13 @@ export default function Tips() {
   return (
       <View style={styles.container}>
         <Header name={user.name} />
-        <Text>Tela Dicas</Text>
+        <View style={{
+                    top: -30, 
+                    resizeMode: 'contain',
+                    alignItems: 'center',
+                    }}>
+          <Image source={require('../../assets/tips.png')} />
+        </View>
       </View>
     );
   }

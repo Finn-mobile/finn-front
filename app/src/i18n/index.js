@@ -8,6 +8,9 @@ const resources = {
   pt: {
     translation: require('./locales/pt/translation.json'),
   },
+  es: {
+    translation: require('./locales/es/translation.json'),
+  },
   // ...
 };
 
