@@ -10,10 +10,12 @@ import {
 import * as Animatable from 'react-native-animatable'
 
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 export default function Welcome() {
   
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -30,7 +32,7 @@ export default function Welcome() {
       </View>
 
       <Animatable.View delay={800} animation="fadeInUp" style={styles.containerForm}>
-          <Text style={styles.title}>Monitore e organize seus{'\n'}gastos de qualquer lugar!</Text>
+          <Text style={styles.title}>{t('welcomePage.greeting')}</Text>
           <Text style={styles.text}>Faça o login para começar</Text>
 
           <TouchableOpacity 
