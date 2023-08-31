@@ -4,5 +4,16 @@
     "greetingSub": "Faça o login para começar",
     "signInButtonLabel": "Acessar",
     "signUpButtonLabel": "Criar conta"
+  },
+  "signInPage": {
+    "welcome": "Bem-vindo(a) ao Finn!",
+    "welcomeMessage": "Logue para aproveitar!",
+    "email": "Email",
+    "emailPlaceholder" : "Digite seu email",
+    "password": "Senha",
+    "passwordPlaceholder" : "Digite sua senha",
+    "signInButtonLabel": "Acessar",
+    "signUpButtonLabel": "Ou cadastre-se aqui",
+    "signInError": "Email ou senha invalidos"
   }
 }
