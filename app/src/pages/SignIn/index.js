@@ -6,12 +6,17 @@ import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { AuthContext } from "../../context/AuthContext";
 
+import { useTranslation } from 'react-i18next';
+
+
 export default function SignIn() {
   const { updateUser, updateToken } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigation = useNavigation();
+
+  const { t } = useTranslation();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -21,21 +26,21 @@ export default function SignIn() {
           delay={500}
           style={styles.containerHeader}
         >
-          <Text style={styles.message}>Bem vindo(a) ao Finn</Text>
-          <Text style={styles.message}>Logue para aproveitar!</Text>
+          <Text style={styles.message}>{t('signInPage.welcome')}</Text>
+          <Text style={styles.message}>{t('signInPage.welcomeMessage')}</Text>
         </Animatable.View>
 
         <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-          <Text style={styles.title}>Email</Text>
+          <Text style={styles.title}>{t('signInPage.email')}</Text>
           <TextInput
-            placeholder="Digite seu email..."
+            placeholder={t('signInPage.emailPlaceholder')}
             style={styles.input}
             onChange={(e) => setEmail(e.nativeEvent.text)}
           />
 
-          <Text style={styles.title}>Senha</Text>
+          <Text style={styles.title}>{t('signInPage.password')}</Text>
           <TextInput
-            placeholder="Digite sua senha"
+            placeholder={t('signInPage.passwordPlaceholder')}
             style={styles.input}
             onChange={(e) => setPassword(e.nativeEvent.text)}
           />
@@ -49,7 +54,7 @@ export default function SignIn() {
                 headers: { "Content-type": "application/json" },
               });
               if (response.status !== 200) {
-                Alert.alert("Email ou senha invalidos");
+                Alert.alert(t('signInPage.signInError'));
                 return;
               }
               const { token, user } = await response.json();
@@ -58,14 +63,14 @@ export default function SignIn() {
               navigation.navigate("Home");
             }}
           >
-            <Text style={styles.buttonText}>Acessar</Text>
+            <Text style={styles.buttonText}>{t('signInPage.signInButtonLabel')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.buttonRegister}
             onPress={() => navigation.navigate("Register")}
           >
-            <Text style={styles.registerText}>Ou cadastre-se aqui</Text>
+            <Text style={styles.registerText}>{t('signInPage.signUpButtonLabel')}</Text>
           </TouchableOpacity>
         </Animatable.View>
       </View>

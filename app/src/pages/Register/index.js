@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -10,6 +11,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   const handleRegister = async () => {
     if (!name || !email || !confirmEmail || !password || !confirmPassword) {
@@ -44,16 +46,16 @@ const Register = () => {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>Crie sua conta no Finn!</Text>
+      <Text style={styles.title}>{t('createAccountPage.title')}</Text>
 
-      <Text style={styles.label}>Nome</Text>
+      <Text style={styles.label}>{t('createAccountPage.name')}</Text>
       <TextInput
         style={styles.input}
         value={name}
         onChange={(e) => setName(e.nativeEvent.text)}
       />
 
-      <Text style={styles.label}>Email</Text>
+      <Text style={styles.label}>{t('createAccountPage.email')}</Text>
       <TextInput
         style={styles.input}
         value={email}
@@ -61,7 +63,7 @@ const Register = () => {
         keyboardType="email-address"
       />
 
-      <Text style={styles.label}>Confirmar Email</Text>
+      <Text style={styles.label}>{t('createAccountPage.emailConfirm')}</Text>
       <TextInput
         style={styles.input}
         value={confirmEmail}
@@ -69,7 +71,7 @@ const Register = () => {
         keyboardType="email-address"
       />
 
-      <Text style={styles.label}>Senha</Text>
+      <Text style={styles.label}>{t('createAccountPage.password')}</Text>
       <TextInput
         style={styles.input}
         value={password}
@@ -77,7 +79,7 @@ const Register = () => {
         secureTextEntry
       />
 
-      <Text style={styles.label}>Confirmar Senha</Text>
+      <Text style={styles.label}>{t('createAccountPage.passwordConfirm')}</Text>
       <TextInput
         style={styles.input}
         value={confirmPassword}
@@ -86,12 +88,12 @@ const Register = () => {
       />
 
       <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
-        <Text style={styles.buttonText}>Cadastrar</Text>
+        <Text style={styles.buttonText}>{t('createAccountPage.buttonLabel')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginButton}
       onPress={ () => navigation.navigate('SignIn') }>
-        <Text style={styles.buttonLoginText}>Já tem uma conta ? Clique aqui</Text>
+        <Text style={styles.buttonLoginText}>{t('createAccountPage.buttonSigin')}</Text>
       </TouchableOpacity>
     </View>
   );

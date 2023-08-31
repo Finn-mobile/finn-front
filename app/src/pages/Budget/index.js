@@ -2,12 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, StatusBar, TextInput } from 'react-native';
 import HeaderBack from '../../components/HeaderBack';
 import { AuthContext } from '../../context/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 const Budget = () => {
   const [BudgetData, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const { token, user } = useContext(AuthContext);
   const value = 0;
+  const { t } = useTranslation();
+
   let url = 'http://192.168.3.14:3000/transactions';
 
   let options = {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+ token}};
@@ -30,11 +33,11 @@ const Budget = () => {
       <HeaderBack />
 
         <View style={styles.HeaderPage}>
-          <Text style={styles.label}>Orçamento</Text>
+          <Text style={styles.label}>{t('budgetPage.title')}</Text>
         </View>
 
         <View>
-          <Text style={{fontSize: 30, color: 'white', padding: 20}}>Carteira: R${value}</Text>
+          <Text style={{fontSize: 30, color: 'white', padding: 20}}>{t('budgetPage.money')}: R${value}</Text>
         </View>
         <View style={{ marginBottom: 20, marginTop:20, marginRigh: 10, marginLeft: 10 }}>
             {isLoading ? <Text>Loading...</Text> :

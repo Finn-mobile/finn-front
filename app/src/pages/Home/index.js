@@ -7,11 +7,14 @@ import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 
 export default function Home() {
   const { user } = useContext(AuthContext);
 
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   const handleButtonPress = () => {
     // Lógica a ser executada quando o botão for pressionado
@@ -36,19 +39,19 @@ export default function Home() {
       <GenericButton
        onPress={ () => navigation.navigate('Budget') }
        iconName={require('../../components/assets/budget.png')}
-       buttonName="Orçamento"
+       buttonName={t('homePage.budget')}
       />
 
       <GenericButton
        onPress={ () => navigation.navigate('ManualRecord') }
        iconName={require('../../components/assets/register.png')}
-       buttonName="Registrar"
+       buttonName={t('homePage.register')}
       />
 
       <GenericButton
        onPress={ () => navigation.navigate('Tips') }
        iconName={require('../../components/assets/tips.png')}
-       buttonName="Dicas"
+       buttonName={t('homePage.tips')}
       />
         
       </View>

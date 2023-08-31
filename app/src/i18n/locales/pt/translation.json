@@ -1,0 +1,59 @@
+{
+  "welcomePage": {
+    "greeting": "Monitore e organize seus\ngastos de qualquer lugar!",
+    "greetingSub": "Faça o login para começar",
+    "signInButtonLabel": "Acessar",
+    "signUpButtonLabel": "Criar conta"
+  },
+  "signInPage": {
+    "welcome": "Bem-vindo(a) ao Finn!",
+    "welcomeMessage": "Logue para aproveitar!",
+    "email": "Email",
+    "emailPlaceholder" : "Digite seu email",
+    "password": "Senha",
+    "passwordPlaceholder" : "Digite sua senha",
+    "signInButtonLabel": "Acessar",
+    "signUpButtonLabel": "Ou cadastre-se aqui",
+    "signInError": "Email ou senha invalidos"
+  },
+  "createAccountPage":{
+    "title": "Crie sua conta no Finn",
+    "name": "Nome",
+    "email": "Email",
+    "emailConfirm": "Confirmar Email",
+    "password": "Senha",
+    "passwordConfirm": "Confirmar Senha",
+    "buttonLabel": "Cadastrar",
+    "buttonSigin": "Já tem uma conta? Clique aqui",
+    "alertSuccess": "Conta criada com sucesso!"  
+  },
+  "homePage":{
+    "budget": "Orçamento",
+    "register": "Registrar",
+    "tips": "Dicas"
+  },
+  "registerPage":{
+    "title":"Registro Financeiro",
+    "expense":"Gasto",
+    "income":"Recebimento",
+    "description": "Descrição",
+    "descriptionPlaceholder": "Qual item deseja cadastrar ?",
+    "value": "Valor",
+    "valuePlaceholder": "Quanto o valor ?",
+    "category": "Categoria",
+    "buttonRegister": "Cadastrar",
+    "alertSuccess":"Registro cadastrado com sucesso!"
+  },
+  "gptPage":{
+   "inputPlaceholder" : "Insira os seus ganhos e gastos:",
+   "buttonLabel": "Cadastrar",
+   "title": "Registro Gepeto"
+  },
+  "budgetPage":{
+    "title": "Orçamento",
+    "money": "Dinheiro"
+  },
+  "header":{
+    "hello": "Olá"
+  }
+}

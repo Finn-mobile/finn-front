@@ -8,15 +8,20 @@ import {
 } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import HeaderBack from "../HeaderBack";
+import { useTranslation } from 'react-i18next';
+
 
 const StatusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 22 : 64;
 
 export default function Header({ name }){
+    
+    const { t } = useTranslation();
+
     return (
         <View style={styles.container}>
             <HeaderBack />
             <View style={styles.content}>
-                <Text style={styles.username}>Olá, {name}!</Text>
+                <Text style={styles.username}>{t('header.hello')}, {name}!</Text>
                 <TouchableOpacity activeOpacity={0.5} style={styles.buttonUser}>
                     <Feather name="user" size={30} color="#FFF" />
                 </TouchableOpacity>
