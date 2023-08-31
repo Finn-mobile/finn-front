@@ -33,20 +33,20 @@ export default function Welcome() {
 
       <Animatable.View delay={800} animation="fadeInUp" style={styles.containerForm}>
           <Text style={styles.title}>{t('welcomePage.greeting')}</Text>
-          <Text style={styles.text}>Faça o login para começar</Text>
+          <Text style={styles.text}>{t('welcomePage.greetingSub')}</Text>
 
           <TouchableOpacity 
             style={styles.button}
             onPress={ () => navigation.navigate('SignIn') }
           >
-            <Text style={styles.buttonText}>Acessar</Text> 
+            <Text style={styles.buttonText}>{t('welcomePage.signInButtonLabel')}</Text> 
           </TouchableOpacity>
 
           <TouchableOpacity 
             style={styles.buttonRegister}
             onPress={ () => navigation.navigate('Register') }
           >
-            <Text style={styles.buttonRegisterText}>Criar conta</Text> 
+            <Text style={styles.buttonRegisterText}>{t('welcomePage.signUpButtonLabel')}</Text> 
           </TouchableOpacity>
 
       </Animatable.View>

@@ -1,3 +1,8 @@
 {
-  "greeting": "Hello, World!"
+  "welcomePage": {
+    "greeting": "Monitore e organize seus\ngastos de qualquer lugar!",
+    "greetingSub": "Faça o login para começar",
+    "signInButtonLabel": "Acessar",
+    "signUpButtonLabel": "Criar conta"
+  }
 }
