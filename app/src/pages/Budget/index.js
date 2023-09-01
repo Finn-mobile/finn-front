@@ -11,7 +11,7 @@ const Budget = () => {
   const value = 0;
   const { t } = useTranslation();
 
-  let url = 'http://192.168.3.14:3000/transactions';
+  let url = 'http://192.168.18.7:3000/transactions';
 
   let options = {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+ token}};
   
