@@ -13,7 +13,7 @@ const GptRecord = () => {
 
   const handleRegistergpt = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    let url = 'http://192.168.3.14:3000/transactions/input';
+    let url = 'http://192.168.18.7:3000/transactions/input';
 
     let options = {
       method: 'POST',

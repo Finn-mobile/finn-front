@@ -15,31 +15,31 @@ const Register = () => {
 
   const handleRegister = async () => {
     if (!name || !email || !confirmEmail || !password || !confirmPassword) {
-      Alert.alert("Preencha todos os campos!");
+      Alert.alert(t('createAccountPage.errorFields'));
       return;
     }
 
     if (email !== confirmEmail) {
-      Alert.alert("Email devem ser iguais");
+      Alert.alert(t('createAccountPage.errorEmail'));
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert("Senhas devem ser iguais");
+      Alert.alert(t('createAccountPage.errorPass'));
       return;
     }
     
-    const response = await fetch("http://192.168.3.14:3000/signup", {
+    const response = await fetch("http://192.168.18.7:3000/signup", {
       method: "POST",
       body: JSON.stringify({ email, password, name }),
       headers: { "Content-type": "application/json" },
     });
 
     if (response.status !== 201) {
-      Alert.alert("Email já usado");
+      Alert.alert(t('createAccountPage.alertEmail'));
       return;
     }
-    Alert.alert("Conta criada")
+    Alert.alert(t('createAccountPage.alertSuccess'))
     navigation.navigate("SignIn")
   };
 

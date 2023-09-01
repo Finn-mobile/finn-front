@@ -25,7 +25,11 @@
     "passwordConfirm": "Confirmar Senha",
     "buttonLabel": "Cadastrar",
     "buttonSigin": "Já tem uma conta? Clique aqui",
-    "alertSuccess": "Conta criada com sucesso!"  
+    "alertSuccess": "Conta criada com sucesso!",
+    "errorFields": "Preencha todos os campos",
+    "errorEmail": "Email devem ser iguais",
+    "errorPass": "Senhas devem ser iguais",
+    "alertEmail": "Email já usado"
   },
   "homePage":{
     "budget": "Orçamento",

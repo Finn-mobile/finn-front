@@ -16,7 +16,7 @@ const CreateRegister = () => {
 
   const handleRegister = () => {
     // Aqui você pode fazer o tratamento dos dados e realizar o registro
-    let url = 'http://192.168.3.14:3000/transactions';
+    let url = 'http://192.168.18.7:3000/transactions';
 
     let options = {
       method: 'POST',
@@ -35,7 +35,7 @@ const CreateRegister = () => {
   };
 
   useEffect(() => {
-    let url = 'http://192.168.3.14:3000/categories';
+    let url = 'http://192.168.18.7:3000/categories';
 
     let options = {
       method: 'GET',
@@ -63,8 +63,8 @@ const CreateRegister = () => {
         selectedValue={type}
         onValueChange={(itemValue) => setType(itemValue)}
       >
-        <Picker.Item label={t('registerPage.expense')} value={t('registerPage.expense')} />
-        <Picker.Item label={t('registerPage.income')} value={t('registerPage.income')} />
+        <Picker.Item label={t('registerPage.expense')} value="Gasto" />
+        <Picker.Item label={t('registerPage.income')} value="Recebimento" />
       </Picker>
 
       <Text style={styles.label}>{t('registerPage.description')}</Text>

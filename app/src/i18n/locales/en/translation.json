@@ -25,7 +25,11 @@
     "passwordConfirm": "Confirm Password",
     "buttonLabel": "Register",
     "buttonSigin": "Already have an account? Click here",
-    "alertSuccess": "Account successfully created!"
+    "alertSuccess": "Account successfully created!",
+    "errorFields": "Fill in all fields",
+    "errorEmail": "Email must match",
+    "errorPass": "Passwords must match",
+    "alertEmail": "Email already used"
   },
   "homePage": {
     "budget": "Budget",

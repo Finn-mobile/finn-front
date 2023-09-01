@@ -16,6 +16,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
+  compatibilityJSON: 'v3',
   lng: "pt", // Default language
   fallbackLng: "pt", // Fallback language
   interpolation: {
